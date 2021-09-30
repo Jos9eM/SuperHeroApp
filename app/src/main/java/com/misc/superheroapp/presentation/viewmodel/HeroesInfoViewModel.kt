@@ -19,7 +19,7 @@ class HeroesInfoViewModel @Inject constructor(
     state: SavedStateHandle
 ) : AndroidViewModel(app) {
 
-    private val span = 15
+    val span = 15
     var enable = true
 
     private val _listHeroes =

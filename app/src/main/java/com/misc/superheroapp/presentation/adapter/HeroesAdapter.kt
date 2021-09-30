@@ -19,6 +19,12 @@ class HeroesAdapter() : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
             if (hero.response == "success") {
                 binding.nameHero.text = hero.name
                 binding.ivHero.context.showGlideImg(hero.image.url, binding.ivHero)
+
+                binding.root.setOnClickListener{
+                    onItemClickListener?.let {
+                        it(hero)
+                    }
+                }
             }
         }
     }
@@ -30,7 +36,13 @@ class HeroesAdapter() : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
     fun update(hero: HeroInfoResponse) {
         listHeroes.add(hero)
-        notifyDataSetChanged()
+        notifyItemInserted(listHeroes.size - 1)
+    }
+
+    private var onItemClickListener: ((HeroInfoResponse) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (HeroInfoResponse) -> Unit) {
+        onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroesViewHolder {

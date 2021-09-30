@@ -12,7 +12,12 @@
         tools:layout="@layout/fragment_hero">
         <action
             android:id="@+id/action_heroFragment_to_heroDetailFragment"
-            app:destination="@id/heroDetailFragment" />
+            app:destination="@id/heroDetailFragment">
+            <argument
+                android:name="HeroObject"
+                app:argType="com.misc.superheroapp.data.model.HeroInfoResponse"
+                app:nullable="true" />
+        </action>
     </fragment>
 
     <fragment

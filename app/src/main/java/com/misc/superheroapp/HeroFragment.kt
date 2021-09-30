@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.misc.superheroapp.data.model.HeroInfoResponse
 import com.misc.superheroapp.data.utils.Resource
 import com.misc.superheroapp.databinding.FragmentHeroBinding
 import com.misc.superheroapp.presentation.adapter.HeroesAdapter
@@ -21,6 +24,8 @@ class HeroFragment : Fragment() {
     private lateinit var viewModel: HeroesInfoViewModel
 
     private lateinit var heroesAdapter: HeroesAdapter
+    private var isScrolling = false
+    private var isLoading = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,7 @@ class HeroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
         initRecyclerView()
+        heroesAdapter.setOnItemClickListener { seeDetails(it) }
         initHeroesObserver()
         viewModel.enable = true
         viewModel.listHeroes.value?.let {
@@ -45,6 +51,11 @@ class HeroFragment : Fragment() {
         }
     }
 
+    private fun seeDetails(it: HeroInfoResponse) {
+        val action = HeroFragmentDirections.actionHeroFragmentToHeroDetailFragment(it)
+        view?.findNavController()?.navigate(action)
+    }
+
     private fun initRecyclerView() {
         heroesAdapter = HeroesAdapter()
         binding.rvHeroes.apply {
@@ -54,18 +65,7 @@ class HeroFragment : Fragment() {
             } else {
                 GridLayoutManager(activity, 4)
             }
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    val layoutManager =
-                        LinearLayoutManager::class.java.cast(recyclerView.layoutManager)
-                    val totalItemCount = layoutManager.itemCount
-                    val lastVisible = layoutManager.findLastVisibleItemPosition()
-                    val endHasBeenReached = lastVisible + 5 >= totalItemCount
-                    if (totalItemCount >= 10 && endHasBeenReached) {
-                        viewModel.getHeroesInfo()
-                    }
-                }
-            })
+            addOnScrollListener(this@HeroFragment.onScrollLister)
         }
     }
 
@@ -93,10 +93,35 @@ class HeroFragment : Fragment() {
     }
 
     private fun showProgress() {
+        isLoading = true
         binding.progress.visibility = View.VISIBLE
     }
 
     private fun hideProgress() {
+        isLoading = false
         binding.progress.visibility = View.GONE
+    }
+
+    private val onScrollLister = object : RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                isScrolling = true
+            }
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            val layoutManager = binding.rvHeroes.layoutManager as LinearLayoutManager
+            val sizeOfCurrentList = layoutManager.itemCount
+            val visibleItems = layoutManager.childCount
+            val topPosition = layoutManager.findFirstVisibleItemPosition()
+
+            val hasReachedToEnd = topPosition + visibleItems >= sizeOfCurrentList
+            if (!isLoading && hasReachedToEnd && isScrolling && sizeOfCurrentList >= viewModel.span) {
+                viewModel.getHeroesInfo()
+                isScrolling = false
+            }
+        }
     }
 }
