@@ -7,7 +7,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.widget.ImageView
+import android.widget.RatingBar
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.HtmlCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -78,4 +81,29 @@ fun Context.showGlideImg(url: String, imageView: ImageView) {
                 return false
             }
         }).into(imageView)
+}
+
+fun RatingBar.showRate(value: String) {
+    rating = if (value != "null") ((value.toFloat() * 5) / 100) else 0f
+}
+
+fun TextView.textHtml(firstString: String, rest: String) {
+    text = HtmlCompat.fromHtml("<b><font color=#FFFFFF> $firstString </></b> $rest", HtmlCompat.FROM_HTML_MODE_COMPACT)
+}
+
+fun ImageView.setGender(gender: String){
+    when(gender){
+        "Male" -> this.setImageResource(R.drawable.ic_male)
+        "Female" -> this.setImageResource(R.drawable.ic_fem)
+        else -> this.setImageResource(R.drawable.ic_trans)
+    }
+}
+
+
+fun ImageView.setAlignment(alignment: String){
+    when(alignment){
+        "GOOD" -> this.setImageResource(R.drawable.ic_hero)
+        "BAD" -> this.setImageResource(R.drawable.ic_villain)
+        else -> this.setImageResource(R.drawable.ic_anti_hero)
+    }
 }

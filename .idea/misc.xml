@@ -4,11 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/card_background.xml" value="0.33229166666666665" />
+        <entry key="app/src/main/res/drawable/ic_anti_hero.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/ic_fem.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/ic_hero.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/ic_male.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/ic_trans.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/ic_villain.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/drawable/outline_transgender_24.xml" value="0.20986842105263157" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_hero.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/layout/fragment_hero_detail.xml" value="0.31614583333333335" />
         <entry key="app/src/main/res/layout/fragment_hero_saved.xml" value="0.31614583333333335" />
         <entry key="app/src/main/res/layout/hero_list_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_power.xml" value="0.19967105263157894" />
+        <entry key="app/src/main/res/layout/rating_bars.xml" value="0.19967105263157894" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.31614583333333335" />
       </map>
     </option>

@@ -2,7 +2,6 @@ package com.misc.superheroapp.presentation.viewmodel
 
 import android.app.Application
 import android.content.Context
-import android.widget.Toast
 import androidx.lifecycle.*
 import com.misc.superheroapp.data.model.HeroInfoResponse
 import com.misc.superheroapp.data.utils.Resource
@@ -20,7 +19,7 @@ class HeroesInfoViewModel @Inject constructor(
     state: SavedStateHandle
 ) : AndroidViewModel(app) {
 
-    val span = 15
+    private val span = 15
     var enable = true
 
     private val _listHeroes =

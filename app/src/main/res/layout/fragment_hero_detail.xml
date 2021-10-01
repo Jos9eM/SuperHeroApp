@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     tools:context=".HeroDetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:padding="15dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="15dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivHero"
@@ -22,76 +22,207 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/heroName"
-            app:layout_constraintTop_toTopOf="@+id/ivHero"
-            app:layout_constraintStart_toEndOf="@+id/ivHero"
-            android:layout_marginStart="15dp"
-            tools:text="Negasonic Tennage Warhead"
             style="@style/HeroNameText"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            app:layout_constraintTop_toTopOf="@+id/ivHero"
+            tools:text="Batman" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fullName"
-            app:layout_constraintTop_toBottomOf="@+id/heroName"
-            app:layout_constraintStart_toEndOf="@+id/ivHero"
-            app:layout_constraintEnd_toStartOf="@+id/alignment"
+            style="@style/FullNameText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            style="@style/FullNameText"
-            tools:text="Bruce Wayne"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintEnd_toStartOf="@+id/alignment"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            app:layout_constraintTop_toBottomOf="@+id/heroName"
+            tools:text="Bruce Wayne" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/alterEgos"
-            app:layout_constraintTop_toBottomOf="@+id/fullName"
-            app:layout_constraintStart_toEndOf="@+id/ivHero"
-            app:layout_constraintEnd_toStartOf="@+id/alignment"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
             style="@style/FullNameText"
-            tools:text="No alter egos found."
             android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/alignment"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            app:layout_constraintTop_toBottomOf="@+id/fullName"
+            tools:text="No alter egos found." />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/alignment"
-            app:layout_constraintBottom_toBottomOf="@+id/ivHero"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="50dp"
-            android:layout_height="70dp"/>
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHero"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/gender"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHero"
+            app:layout_constraintStart_toEndOf="@+id/ivHero" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/aliases"
-            app:layout_constraintTop_toBottomOf="@+id/ivHero"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="10dp"
             style="@style/AliasesText"
-            tools:text="Alias:"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHero"
+            tools:text="Alias:" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAliases"
-            app:layout_constraintStart_toEndOf="@+id/aliases"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aliases"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/aliases"
+            app:layout_constraintTop_toBottomOf="@+id/aliases"
             tools:itemCount="2"
-            tools:listitem="@layout/item_alias"
-            android:layout_height="wrap_content"/>
+            tools:listitem="@layout/item_alias" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/birthPlace"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/rvAliases"
+            tools:text="Lugar de Nacimiento: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/firstAppearance"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/birthPlace"
+            tools:text="Primera Aparicion: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/publisher"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/firstAppearance"
+            tools:text="Publicado por: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/powersTitle"
+            style="@style/NameTextBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/publisher"
+            tools:text="Estadisticas: " />
 
         <include
             android:id="@+id/powerStats"
             layout="@layout/rating_bars"
-            android:layout_marginTop="5dp"
-            app:layout_constraintTop_toBottomOf="@+id/rvAliases"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/powersTitle" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/race"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/powerStats"
+            tools:text="Raza: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/height"
+            style="@style/NameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/weight"
+            app:layout_constraintTop_toBottomOf="@+id/race"
+            tools:text="Altura: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weight"
+            style="@style/NameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/race"
+            tools:text="Peso: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/eyes"
+            style="@style/NameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/hair"
+            app:layout_constraintTop_toBottomOf="@+id/height"
+            tools:text="Ojos: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/hair"
+            style="@style/NameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/eyes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/height"
+            tools:text="Cabello: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/occupation"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/eyes"
+            tools:text="Ocupacion: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/base"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/occupation"
+            tools:text="Base: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/groups"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/base"
+            tools:text="Grupos Afiliados: " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/relatives"
+            style="@style/NameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/groups"
+            tools:text="Relaciones: " />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

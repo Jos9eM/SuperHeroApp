@@ -1,63 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
-    android:layout_height="match_parent">
-
-   <include
-       layout="@layout/item_power"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toStartOf="@+id/strength"
-       android:id="@+id/intelligence"/>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <include
+        android:id="@+id/intelligence"
         layout="@layout/item_power"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/strength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/strength"
+        layout="@layout/item_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/intelligence"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/strength"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
+        android:id="@+id/speed"
         layout="@layout/item_power"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/intelligence"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/durability"
-        android:layout_height="wrap_content"
-        android:id="@+id/speed"/>
-
-    <include
-        layout="@layout/item_power"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/intelligence"
-        app:layout_constraintStart_toEndOf="@+id/speed"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/durability"/>
-
-    <include
-        layout="@layout/item_power"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/speed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/combat"
-        android:layout_height="wrap_content"
-        android:id="@+id/power"/>
+        app:layout_constraintTop_toBottomOf="@+id/intelligence" />
 
     <include
+        android:id="@+id/durability"
         layout="@layout/item_power"
         android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/speed"
-        app:layout_constraintStart_toEndOf="@+id/power"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_height="wrap_content"
-        android:id="@+id/combat"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/speed"
+        app:layout_constraintTop_toBottomOf="@+id/intelligence" />
+
+    <include
+        android:id="@+id/power"
+        layout="@layout/item_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/combat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speed" />
+
+    <include
+        android:id="@+id/combat"
+        layout="@layout/item_power"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/power"
+        app:layout_constraintTop_toBottomOf="@+id/speed" />
 </androidx.constraintlayout.widget.ConstraintLayout>

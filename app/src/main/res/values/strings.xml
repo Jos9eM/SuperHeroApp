@@ -4,4 +4,24 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
     <string name="saved">Saved</string>
+    <string name="combat">Combate: </string>
+    <string name="intelligence">Inteligencia: </string>
+    <string name="Speed">Velocidad: </string>
+    <string name="Strength">Fuerza: </string>
+    <string name="Power">Poder: </string>
+    <string name="Durability">Durabilidad: </string>
+    <string name="birthPlace">Lugar de Nacimiento: </string>
+    <string name="firstApp">Primera Aparicion: </string>
+    <string name="published">Publicado por: </string>
+    <string name="stats">Estadisticas: </string>
+    <string name="aliases">Alias: </string>
+    <string name="race">Raza: </string>
+    <string name="height">Altura: </string>
+    <string name="weight">Peso: </string>
+    <string name="eyes">Ojos: </string>
+    <string name="hair">Cabello: </string>
+    <string name="occupation">Ocupacion: </string>
+    <string name="base">Base: </string>
+    <string name="groups">Grupos Afiliados: </string>
+    <string name="relatives">Relaciones: </string>
 </resources>

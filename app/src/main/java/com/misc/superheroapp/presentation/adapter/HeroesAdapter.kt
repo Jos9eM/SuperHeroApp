@@ -9,7 +9,7 @@ import com.misc.superheroapp.databinding.HeroListItemBinding
 import com.misc.superheroapp.presentation.utils.showGlideImg
 
 @SuppressLint("NotifyDataSetChanged")
-class HeroesAdapter() : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
+class HeroesAdapter : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
 
     private var listHeroes = mutableListOf<HeroInfoResponse>()
 
@@ -20,7 +20,7 @@ class HeroesAdapter() : RecyclerView.Adapter<HeroesAdapter.HeroesViewHolder>() {
                 binding.nameHero.text = hero.name
                 binding.ivHero.context.showGlideImg(hero.image.url, binding.ivHero)
 
-                binding.root.setOnClickListener{
+                binding.root.setOnClickListener {
                     onItemClickListener?.let {
                         it(hero)
                     }
