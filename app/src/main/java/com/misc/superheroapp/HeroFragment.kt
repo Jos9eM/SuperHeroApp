@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -38,10 +39,9 @@ class HeroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
-        initRecyclerView()
-        heroesAdapter.setOnItemClickListener { seeDetails(it) }
-        initHeroesObserver()
         viewModel.enable = true
+        initRecyclerView()
+        initHeroesObserver()
         viewModel.listHeroes.value?.let {
             if (!it.isNullOrEmpty()) {
                 heroesAdapter.updateAll(it)
@@ -67,6 +67,7 @@ class HeroFragment : Fragment() {
             }
             addOnScrollListener(this@HeroFragment.onScrollLister)
         }
+        heroesAdapter.setOnItemClickListener { seeDetails(it) }
     }
 
     private fun initHeroesObserver() {
@@ -75,8 +76,10 @@ class HeroFragment : Fragment() {
                 is Resource.Success -> {
                     hideProgress()
                     response.data?.let {
-                        heroesAdapter.update(it)
-                        viewModel.updateListHeroes(it)
+                        if(viewModel.listHeroes.value?.contains(it) == false){
+                            heroesAdapter.update(it)
+                            viewModel.updateListHeroes(it)
+                        }
                     }
                 }
                 is Resource.Loading -> {
@@ -118,7 +121,7 @@ class HeroFragment : Fragment() {
             val topPosition = layoutManager.findFirstVisibleItemPosition()
 
             val hasReachedToEnd = topPosition + visibleItems >= sizeOfCurrentList
-            if (!isLoading && hasReachedToEnd && isScrolling && sizeOfCurrentList >= viewModel.span) {
+            if (!isLoading && hasReachedToEnd && isScrolling && sizeOfCurrentList >= 5) {
                 viewModel.getHeroesInfo()
                 isScrolling = false
             }

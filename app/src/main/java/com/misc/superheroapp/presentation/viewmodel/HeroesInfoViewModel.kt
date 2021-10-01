@@ -2,6 +2,7 @@ package com.misc.superheroapp.presentation.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.*
 import com.misc.superheroapp.data.model.HeroInfoResponse
 import com.misc.superheroapp.data.utils.Resource
@@ -34,13 +35,12 @@ class HeroesInfoViewModel @Inject constructor(
             _heroesInfo.postValue(Resource.Loading())
             try {
                 enable = false
+                val listSize = listHeroes.value?.size
                 val countStart =
-                    if (listHeroes.value?.size == 0) 1 else (listHeroes.value?.size?.plus(
-                        1
-                    ))
+                    if (listSize == 0) 1 else (listSize?.plus(1))
                 val countEnd = countStart?.plus(span)
                 for (i in countStart!!..countEnd!!) {
-                    if (i <= 731) {
+                    if (i <= 731) {  // Ids Total Number
                         if (isNetworkAvailable(app)) {
                             val apiResult = getHeroInfoUseCase.execute(i.toString())
                             _heroesInfo.postValue(apiResult)

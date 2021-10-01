@@ -1,14 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
     tools:context=".HeroDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:padding="15dp"
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivHero"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heroName"
+            app:layout_constraintTop_toTopOf="@+id/ivHero"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            android:layout_marginStart="15dp"
+            tools:text="Negasonic Tennage Warhead"
+            style="@style/HeroNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fullName"
+            app:layout_constraintTop_toBottomOf="@+id/heroName"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            app:layout_constraintEnd_toStartOf="@+id/alignment"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/FullNameText"
+            tools:text="Bruce Wayne"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/alterEgos"
+            app:layout_constraintTop_toBottomOf="@+id/fullName"
+            app:layout_constraintStart_toEndOf="@+id/ivHero"
+            app:layout_constraintEnd_toStartOf="@+id/alignment"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            style="@style/FullNameText"
+            tools:text="No alter egos found."
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/alignment"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHero"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="70dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/aliases"
+            app:layout_constraintTop_toBottomOf="@+id/ivHero"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            style="@style/AliasesText"
+            tools:text="Alias:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAliases"
+            app:layout_constraintStart_toEndOf="@+id/aliases"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aliases"
+            android:layout_width="0dp"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_alias"
+            android:layout_height="wrap_content"/>
+
+
+        <include
+            android:id="@+id/powerStats"
+            layout="@layout/rating_bars"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/rvAliases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

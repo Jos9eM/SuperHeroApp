@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/intelligence"
+        app:layout_constraintTop_toTopOf="@+id/rateIntelligence"
+        app:layout_constraintBottom_toBottomOf="@+id/rateIntelligence"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/NameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text= "Inteligencia:"/>
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        app:layout_constraintStart_toEndOf="@+id/intelligence"
+        android:layout_marginStart="15dp"
+        android:id="@+id/rateIntelligence"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

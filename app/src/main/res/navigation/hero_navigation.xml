@@ -15,8 +15,7 @@
             app:destination="@id/heroDetailFragment">
             <argument
                 android:name="HeroObject"
-                app:argType="com.misc.superheroapp.data.model.HeroInfoResponse"
-                app:nullable="true" />
+                app:argType="com.misc.superheroapp.data.model.HeroInfoResponse" />
         </action>
     </fragment>
 
@@ -27,12 +26,20 @@
         tools:layout="@layout/fragment_hero_saved">
         <action
             android:id="@+id/action_heroSavedFragment_to_heroDetailFragment"
-            app:destination="@id/heroDetailFragment" />
+            app:destination="@id/heroDetailFragment">
+            <argument
+                android:name="HeroObject"
+                app:argType="com.misc.superheroapp.data.model.HeroInfoResponse" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/heroDetailFragment"
         android:name="com.misc.superheroapp.HeroDetailFragment"
         android:label="fragment_hero_detail"
-        tools:layout="@layout/fragment_hero_detail" />
+        tools:layout="@layout/fragment_hero_detail" >
+        <argument
+            android:name="HeroObject"
+            app:argType="com.misc.superheroapp.data.model.HeroInfoResponse" />
+    </fragment>
 </navigation>
