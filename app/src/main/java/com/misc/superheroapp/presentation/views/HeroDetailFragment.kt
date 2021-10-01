@@ -1,4 +1,4 @@
-package com.misc.superheroapp
+package com.misc.superheroapp.presentation.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.misc.superheroapp.R
 import com.misc.superheroapp.data.model.HeroInfoResponse
 import com.misc.superheroapp.databinding.FragmentHeroDetailBinding
 import com.misc.superheroapp.presentation.adapter.AliasAdapter

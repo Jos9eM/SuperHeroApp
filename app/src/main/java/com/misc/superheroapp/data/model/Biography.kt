@@ -18,4 +18,4 @@ data class Biography(
     val placeBirth: String,
     @SerializedName("publisher")
     val publisher: String
-): Serializable
+) : Serializable

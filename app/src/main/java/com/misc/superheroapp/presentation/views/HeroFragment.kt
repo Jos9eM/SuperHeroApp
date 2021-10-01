@@ -1,11 +1,9 @@
-package com.misc.superheroapp
+package com.misc.superheroapp.presentation.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsListView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,7 +49,8 @@ class HeroFragment : Fragment() {
     }
 
     private fun seeDetails(it: HeroInfoResponse) {
-        val action = HeroFragmentDirections.actionHeroFragmentToHeroDetailFragment(it)
+        val action =
+            HeroFragmentDirections.actionHeroFragmentToHeroDetailFragment(it)
         view?.findNavController()?.navigate(action)
     }
 
@@ -75,7 +74,7 @@ class HeroFragment : Fragment() {
                 is Resource.Success -> {
                     hideProgress()
                     response.data?.let {
-                        if(viewModel.listHeroes.value?.contains(it) == false){
+                        if (viewModel.listHeroes.value?.contains(it) == false) {
                             heroesAdapter.update(it)
                             viewModel.updateListHeroes(it)
                         }

@@ -88,11 +88,14 @@ fun RatingBar.showRate(value: String) {
 }
 
 fun TextView.textHtml(firstString: String, rest: String) {
-    text = HtmlCompat.fromHtml("<b><font color=#FFFFFF> $firstString </></b> $rest", HtmlCompat.FROM_HTML_MODE_COMPACT)
+    text = HtmlCompat.fromHtml(
+        "<b><font color=#FFFFFF> $firstString </></b> $rest",
+        HtmlCompat.FROM_HTML_MODE_COMPACT
+    )
 }
 
-fun ImageView.setGender(gender: String){
-    when(gender){
+fun ImageView.setGender(gender: String) {
+    when (gender) {
         "Male" -> this.setImageResource(R.drawable.ic_male)
         "Female" -> this.setImageResource(R.drawable.ic_fem)
         else -> this.setImageResource(R.drawable.ic_trans)
@@ -100,8 +103,8 @@ fun ImageView.setGender(gender: String){
 }
 
 
-fun ImageView.setAlignment(alignment: String){
-    when(alignment){
+fun ImageView.setAlignment(alignment: String) {
+    when (alignment) {
         "GOOD" -> this.setImageResource(R.drawable.ic_hero)
         "BAD" -> this.setImageResource(R.drawable.ic_villain)
         else -> this.setImageResource(R.drawable.ic_anti_hero)

@@ -16,4 +16,4 @@ data class Appearance(
     val race: String,
     @SerializedName("weight")
     val weight: List<String>
-): Serializable
+) : Serializable

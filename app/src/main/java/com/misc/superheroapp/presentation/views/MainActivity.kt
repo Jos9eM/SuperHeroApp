@@ -1,10 +1,8 @@
-package com.misc.superheroapp
+package com.misc.superheroapp.presentation.views
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.misc.superheroapp.databinding.ActivityMainBinding
 import com.misc.superheroapp.presentation.viewmodel.HeroesInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,12 +17,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val navView = binding.bnvHeroes
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-
-        navView.setupWithNavController(navController)
     }
 }

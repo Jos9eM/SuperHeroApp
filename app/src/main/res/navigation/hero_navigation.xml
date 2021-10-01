@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/heroFragment"
-        android:name="com.misc.superheroapp.HeroFragment"
+        android:name="com.misc.superheroapp.presentation.views.HeroFragment"
         android:label="fragment_hero"
         tools:layout="@layout/fragment_hero">
         <action
@@ -20,22 +20,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/heroSavedFragment"
-        android:name="com.misc.superheroapp.HeroSavedFragment"
-        android:label="fragment_hero_saved"
-        tools:layout="@layout/fragment_hero_saved">
-        <action
-            android:id="@+id/action_heroSavedFragment_to_heroDetailFragment"
-            app:destination="@id/heroDetailFragment">
-            <argument
-                android:name="HeroObject"
-                app:argType="com.misc.superheroapp.data.model.HeroInfoResponse" />
-        </action>
-    </fragment>
-
-    <fragment
         android:id="@+id/heroDetailFragment"
-        android:name="com.misc.superheroapp.HeroDetailFragment"
+        android:name="com.misc.superheroapp.presentation.views.HeroDetailFragment"
         android:label="fragment_hero_detail"
         tools:layout="@layout/fragment_hero_detail" >
         <argument
